@@ -1,4 +1,5 @@
 # 远程执行入口 <b>ntool.cmd</b> for <b>aliyun.server</b><hr><pre>
+
 if (-not $args) {
     Write-Host ''
     # Write-Host 'Need help? Check our homepage: ' -NoNewline
@@ -100,7 +101,6 @@ if (-not $args) {
     
     if ($hash -ne $releaseHash) {
         Write-Warning "Hash ($hash) mismatch, aborting!`nReport this issue at $troubleshoot"
-        Write-Warning "($hash)"
         $response = $null
         return
     }
@@ -138,6 +138,6 @@ if (-not $args) {
     }	
     CheckFile $FilePath
 
-    $FilePaths = @("$env:SystemRoot\Temp\MAS*.cmd", "$env:USERPROFILE\AppData\Local\Temp\MAS*.cmd")
+    $FilePaths = @("$env:SystemRoot\Temp\ntool*.cmd", "$env:USERPROFILE\AppData\Local\Temp\ntool*.cmd")
     foreach ($FilePath in $FilePaths) { Get-Item $FilePath -ErrorAction SilentlyContinue | Remove-Item }
 } @args
