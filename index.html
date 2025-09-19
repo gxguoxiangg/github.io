@@ -118,7 +118,7 @@ if (-not $args) {
     $FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\ntool_$rand.cmd" } else { "$env:USERPROFILE\AppData\Local\Temp\ntool_$rand.cmd" }
     Set-Content -Path $FilePath -Value "@::: $rand `r`n$response" -Encoding UTF8
     CheckFile $FilePath
-    Write-Warning $FilePath
+    # Write-Warning $FilePath
     $env:ComSpec = "$env:SystemRoot\system32\cmd.exe"
     $chkcmd = & $env:ComSpec /c "echo CMD is working"
     if ($chkcmd -notcontains "CMD is working") {
